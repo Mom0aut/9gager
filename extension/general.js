@@ -36,7 +36,7 @@ function req(channel, next) {
 }
 
 function sendit(channel, data) {
-    fetch('http://localhost/9gager/9gager.git/post9gag.php', {
+    fetch('https://9gagrss.xyz/post9gag.php', {
         method: 'POST', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',
