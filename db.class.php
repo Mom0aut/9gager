@@ -1,6 +1,5 @@
 <?php
-include 'dbpassword.php';
-
+//include 'dbpassword.php';
 class db
 {
 	private static $mysqli = null;
@@ -9,7 +8,7 @@ class db
 	{
 		if(!self::$mysqli)
 		{
-			self::$mysqli = new mysqli($db[0], $db[1], $db[2], $db[3]);
+			self::$mysqli = new mysqli('mysql.9gagrss.xyz', 'gagrss', 'havefun12', 'gagrss');
 			self::$mysqli->set_charset('utf8');
 		}
 		return self::$mysqli;

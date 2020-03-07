@@ -42,7 +42,7 @@ function save_post($post)
 	$mysqli = db::connect();
 
 	$channel       = trim($mysqli->real_escape_string($post->postSection->name));
-	$creationTs    = trim($mysqli->real_escape_string($post->creationTs));
+	$creationTs    = trim($mysqli->real_escape_string(date('Y-m-d H:i:s', $post->creationTs)));
 	$external_id   = trim($mysqli->real_escape_string($post->id));
 	$url           = trim($mysqli->real_escape_string($post->url));
 	$title         = trim($mysqli->real_escape_string($post->title));

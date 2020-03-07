@@ -1,14 +1,14 @@
 
-
-setTimeout(function() {req();}, 4000);
-setTimeout(function() {req('nsfw');}, 4000);
-setTimeout(function() {req('girl');}, 4000);
-setTimeout(function() {req('girlcelebrity');}, 4000);
-setTimeout(function() {req('cosplay');}, 4000);
+let timeouttime = 5000;
+setTimeout(function() {req();}, timeouttime);
+setTimeout(function() {req('nsfw');}, timeouttime+100);
+setTimeout(function() {req('girl');}, timeouttime+200);
+setTimeout(function() {req('girlcelebrity');}, timeouttime+300);
+setTimeout(function() {req('cosplay');}, timeouttime+400);
 
 
 let internalReqCounter = 0;
-let maxInternalReqCounter = 5000;
+let maxInternalReqCounter = 15000;
 
 function req(channel, next) {
     console.log('9gag rss extension, channel:' + channel + ' next:' + next + ' counter:' + internalReqCounter);
@@ -49,7 +49,7 @@ function sendit(channel, data) {
     .then((data) => {
         console.log('Success:', data);
         if(data.next)
-            setTimeout(function() {req(channel, data.next);}, 4000);
+            setTimeout(function() {req(channel, data.next);}, timeouttime);
     })
     .catch((error) => {
         console.error('Error:', error);
