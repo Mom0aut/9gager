@@ -8,7 +8,7 @@ class db
 	{
 		if(!self::$mysqli)
 		{
-			self::$mysqli = new mysqli('mysql.9gagrss.xyz', 'gagrss', 'havefun12', 'gagrss');
+			self::$mysqli = new mysqli('mysql.9gagrss.xyz', 'gagrss', '', 'gagrss');
 			self::$mysqli->set_charset('utf8');
 		}
 		return self::$mysqli;
