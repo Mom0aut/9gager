@@ -15,7 +15,7 @@ $channel = isset($_GET['channel']) ? $_GET['channel'] : null;
 		var article = `<article id="{id}" class="{class}">
 			<a href="{url}" target="_blank">{media}</a>
 			<h1>{title}</h1>
-			<h2>{type} - {channel} - {commentsCount}</h2>
+			<h2>{type} - {channel} - {creationTs} - {commentsCount}</h2>
 			<p>{creation_date} - {descriptionHtml}</p>
 			<ul>{tags}</ul>
 		</article>`;
@@ -72,6 +72,7 @@ $channel = isset($_GET['channel']) ? $_GET['channel'] : null;
     		articleT = articleT.replace('{commentsCount}', postData.commentsCount);
     		articleT = articleT.replace('{id}', postData.external_id);
     		articleT = articleT.replace('{creation_date}', postData.creation_date);
+    		articleT = articleT.replace('{creationTs}', postData.creationTs);
     		articleT = articleT.replace('{channel}', postData.channel);
 
     		if(postData.external_id in localStorage)
@@ -84,6 +85,7 @@ $channel = isset($_GET['channel']) ? $_GET['channel'] : null;
     		switch(postData.type)
     		{
     			case 'Animated':
+    			case 'Video':
     				articleT = articleT.replace('{media}', '<video controls="controls"><source src="'+postData.content_url+'" type="video/mp4"></video>');
     				break;
     			case 'Photo':
