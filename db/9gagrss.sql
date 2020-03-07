@@ -1,5 +1,3 @@
--- ssh gagrss@9gagrss.xyz (f)(f)1..4
-
 -- CREATE SCHEMA IF NOT EXISTS 9gagrss DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 -- USE 9gagrss;
 
