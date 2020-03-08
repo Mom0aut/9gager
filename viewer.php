@@ -29,7 +29,8 @@ $channel = isset($_GET['channel']) ? $_GET['channel'] : null;
 			let channel = document.getElementById('channel').value;
 			if(!(channel in nextCursor))
 				nextCursor[channel] = '';
-			xhr.open('GET', 'json.php?channel=' + channel + '&' + nextCursor[channel]);
+
+			xhr.open('GET', 'json.php?channel=' + channel + '&' + nextCursor[channel] + '&rand=' + Math.random());
 
 			// Track the state changes of the request.
 			xhr.onreadystatechange = function () {

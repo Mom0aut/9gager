@@ -8,7 +8,7 @@ setTimeout(function() {req('cosplay');}, timeouttime+400);
 
 
 let internalReqCounter = 0;
-let maxInternalReqCounter = 15000;
+let maxInternalReqCounter = 150;
 
 function req(channel, next) {
     console.log('9gag rss extension, channel:' + channel + ' next:' + next + ' counter:' + internalReqCounter);
