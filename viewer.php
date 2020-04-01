@@ -4,13 +4,36 @@ require_once 'posts.class.php';
 $channel = isset($_GET['channel']) ? $_GET['channel'] : null;
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="shortcut icon" href="favicon.ico" />
- 	<title><?php echo $channel; ?> 9gagrss.xyz rss viewer</title>
+    <meta name="application-name" content="9gag RSS service (9gagrss.xyz)">
+    <meta name="description" content="9gagrss.xyz a 9Gag.com RSS service to view RSS channel <?php echo $channel; ?>, ATOM and JSON from 9gag with incorporate a simple view of channels that remembers what you have already seen">
+    <meta name="keywords" content="<?php echo $channel; ?>,channel,9gag,rss,atom,json,aggregator,viewer,9gagrss.xyz">
+ 	<title><?php echo $channel; ?> 9gagrss.xyz RSS viewer</title>
+	<!--FACEBOOK / Sharing -->
+    <meta property="og:image" content="9gag-logo.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="772">
+    <meta property="og:image:height" content="386">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.9gagrss.xyz/"/>
+    <meta property="og:title" content="<?php echo $channel; ?> 9gag RSS - 9gagrss.xyz" />
+    <meta property="og:description" content="9gagrss.xyz a 9Gag.com RSS service to view RSS channel <?php echo $channel; ?>, ATOM and JSON from 9gag with incorporate a simple view of channels that remembers what you have already seen" />
+	<script>
+	</script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-183452-21"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-183452-21');
+	</script>
 	<script>
 		var article = `<article id="{id}" class="{class}">
 			<a href="{url}" target="_blank">{media}</a>
@@ -134,8 +157,9 @@ $channel = isset($_GET['channel']) ? $_GET['channel'] : null;
 	</script>
 	<style>
 		body {font-family: Arial;}
-		main {padding: 20px 50px;}
-		.posts {display: flex; flex-wrap: wrap; align-items: center;}
+		header {text-align: center;}
+		main {text-align: center; width: auto; margin: 20px auto; display: block;}
+		.posts {display: flex; flex-wrap: wrap; justify-content: center;}
 		.posts article {padding: 20px; width: 350px; border-bottom: 1px solid gray; transition: all 0.5s;}
 		/*.posts article:hover {background-color: gray; width: 500px; }
 		.posts article:hover img, .posts article:hover video {width: 500px;}*/
@@ -146,16 +170,19 @@ $channel = isset($_GET['channel']) ? $_GET['channel'] : null;
 		.posts article li {padding: 0; margin: 2px 0 0 0; font-size: 80%;}
 		.posts article.watched {background-color: red;}
 
-		.buttons {text-align: center; font-size: 200%;}
+		.buttons {text-align: center; font-size: 200%; margin: 40px 20px;}
 		.buttons select, .buttons button, .buttons input {font-size: 100%;}
 	</style>
 </head>
 <body>
-	<h1><?php echo $channel; ?> 9gagrss.xyz drinker viewer rss</h1>
-	<button onclick="clearAllWatched();"> Clear all watched </button>
+	<header>
+		<h1><?php echo $channel; ?> 9gagrss.xyz drinker viewer rss</h1>
+		<button onclick="clearAllWatched();"> Clear all watched </button>
+	</header>
+
 	<main id="main">
 	</main>
-	<br><br><br><br>
+
 	<div class="buttons">
 		<datalist id="channels">
 			<?php
@@ -171,5 +198,8 @@ $channel = isset($_GET['channel']) ? $_GET['channel'] : null;
 		<button onclick="loadMore(document.getElementById('pages').value);"> -= Load More =- </button><br>
 		<br>
 	</div>
+	<script>
+		loadMore(document.getElementById('pages').value);
+	</script>
 </body>
 </html>
