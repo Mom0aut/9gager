@@ -26,6 +26,15 @@ $channels = posts::load_channels();
     <meta property="og:description" content="9gagrss.xyz a 9Gag.com RSS service to view RSS, ATOM and JSON from 9gag with incorporate a simple view of channels that remembers what you have already seen" />
 	<script>
 	</script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-183452-21"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-183452-21');
+	</script>
 	<style>
 		html, body {font-family: Arial; padding: 0; margin: 0;}
 		h1,h2,h3,h4,h5,h6 {margin: 0; padding: 0;}
