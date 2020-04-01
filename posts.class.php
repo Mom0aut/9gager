@@ -50,7 +50,7 @@ class posts
 		return $last_post;
 	}
 
-	public static function posts_per_channel($channel, $from, $limit)
+	public static function posts_per_channel($channel, $from, $limit, $order_by = 'creationTs')
 	{
 		$mysqli = db::connect();
 
@@ -67,7 +67,7 @@ class posts
 			$where[] = "channel='".$mysqli->real_escape_string($channel)."'";
 		$where = !empty($where) ? ' WHERE '.implode(' AND ', $where) : null;
 
-		$q = "SELECT * FROM posts $where ORDER BY creation_date DESC LIMIT $from,$limit";
+		$q = "SELECT * FROM posts $where ORDER BY $order_by DESC LIMIT $from,$limit";
 
 		$results = $mysqli->query($q)
 					or die($mysqli->error);
