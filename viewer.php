@@ -158,7 +158,7 @@ $channel = isset($_GET['channel']) ? $_GET['channel'] : null;
 	<style>
 		body {font-family: Arial;}
 		header {text-align: center;}
-		main {text-align: center; width: auto; margin: 20px auto; display: block;}
+		main {text-align: center; width: auto; margin: 20px auto; display: block; width: 60%;}
 		.posts {display: flex; flex-wrap: wrap; justify-content: center;}
 		.posts article {padding: 20px; width: 350px; border-bottom: 1px solid gray; transition: all 0.5s;}
 		/*.posts article:hover {background-color: gray; width: 500px; }
@@ -172,6 +172,9 @@ $channel = isset($_GET['channel']) ? $_GET['channel'] : null;
 
 		.buttons {text-align: center; font-size: 200%; margin: 40px 20px;}
 		.buttons select, .buttons button, .buttons input {font-size: 100%;}
+		@media (max-width: 1024px) {
+			main {width: 90%;}
+		}
 	</style>
 </head>
 <body>
