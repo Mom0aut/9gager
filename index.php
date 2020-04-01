@@ -11,17 +11,34 @@ $channels = posts::load_channels();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="shortcut icon" href="favicon.ico" />
- 	<title>9gag RSS</title>
+    <meta name="application-name" content="9gag RSS service (9gagrss.xyz)">
+    <meta name="description" content="9gagrss.xyz a 9Gag.com RSS service to view RSS, ATOM and JSON from 9gag with incorporate a simple view of channels that remembers what you have already seen">
+    <meta name="keywords" content="9gag,rss,atom,json,aggregator,viewer,9gagrss.xyz">
+ 	<title>9gag RSS - 9gagrss.xyz</title>
+	<!--FACEBOOK / Sharing -->
+    <meta property="og:image" content="9gag-logo.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="772">
+    <meta property="og:image:height" content="386">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.9gagrss.xyz/"/>
+    <meta property="og:title" content="9gag RSS - 9gagrss.xyz" />
+    <meta property="og:description" content="9gagrss.xyz a 9Gag.com RSS service to view RSS, ATOM and JSON from 9gag with incorporate a simple view of channels that remembers what you have already seen" />
 	<script>
 	</script>
 	<style>
 		html, body {font-family: Arial; padding: 0; margin: 0;}
 		h1,h2,h3,h4,h5,h6 {margin: 0; padding: 0;}
-		main {width: 50%; padding: 0 1%; margin: 0 auto; background-color: #ddd;}
+		main {width: 50%; padding: 0 1%; margin: 0 auto; background-color: #ddd; transition: all 0.5s;}
+		.last-updated {border: 1px solid #555; text-align: center; padding: 15px; display: block; width: 70%; margin: 0 auto;}
 		.channels {display: flex; flex-wrap: wrap; justify-content: space-evenly;}
 		.channel {margin: 1%; padding: 1%; width: 20%; border: 1px solid black;}
 		.channel h2 {font-size: 110%;}
 		.channel ul {margin: 0; padding: 0; list-style: none;}
+		@media (max-width: 1024px) {
+			main {width: 90%;}
+		}
+
 	</style>
 </head>
 <body>
@@ -41,6 +58,17 @@ $channels = posts::load_channels();
 			which remembers which posts you have already seen (using localstorage) so you will know where to stop and also without the annoying 
 			reload scroll. You can also view the code on <a href="https://github.com/caviv/9gager">git: 9gager</a>
 		</p>
+
+		<div class="last-updated">
+			Last updated: <time datetime="<?php echo posts::last_updated(); ?>"></time><br>
+			Last post: <time datetime="<?php echo posts::last_post(); ?>"></time>
+			<script>
+				let em = document.querySelectorAll('time');
+				for(let i = 0; i < em.length; i++) {
+					em[i].innerHTML = (new Date(em[i].dateTime)).toString();
+				}
+			</script>
+		</div>
 
 		<article class="channels">
 			<?php
