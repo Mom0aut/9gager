@@ -12,14 +12,14 @@ $posts = posts::posts_per_channel($channel, $from, $limit);
 
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n<rss version=\"2.0\">";
 echo "<channel>\r\n";
-echo "<title>9gagrss.xyz RSS for 9gag.com channel:$channel</title>
+echo "<title><![CDATA[9gagrss.xyz RSS for 9gag.com channel:$channel]]></title>
 <link>https://9gagrss.xyz</link>
-<description>9gagrss.xyz RSS for 9gag.com channel:$channel</description>\r\n";
+<description><![CDATA[9gagrss.xyz RSS for 9gag.com channel:$channel]]></description>\r\n";
 foreach($posts as $item)
 {
 	echo "<item>\r\n";
 	foreach($item as $key=>$value)
-		echo "<$key>$value</$key>\r\n";
+		echo "<$key><![CDATA[$value]]></$key>\r\n";
 	echo "</item>\r\n";
 }
 echo "</channel></rss>";
