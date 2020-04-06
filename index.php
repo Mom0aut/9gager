@@ -46,6 +46,7 @@ $channels = posts::load_channels();
 		.channel ul {margin: 0; padding: 0; list-style: none;}
 		@media (max-width: 1024px) {
 			main {width: 90%;}
+			.channel {width: 45%;}
 		}
 
 	</style>
