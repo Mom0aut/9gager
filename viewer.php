@@ -158,12 +158,12 @@ $channel = isset($_GET['channel']) ? $_GET['channel'] : null;
 	<style>
 		body {font-family: Arial;}
 		header {text-align: center;}
-		main {text-align: center; width: auto; margin: 20px auto; display: block; width: 60%;}
+		main {text-align: center; width: auto; margin: 20px auto; display: block; width: 100%;}
 		.posts {display: flex; flex-wrap: wrap; justify-content: center;}
-		.posts article {padding: 20px; width: 350px; border-bottom: 1px solid gray; transition: all 0.5s;}
+		.posts article {padding: 20px; width: 45%; max-width: 360px; border-bottom: 1px solid gray; transition: all 0.5s;}
 		/*.posts article:hover {background-color: gray; width: 500px; }
 		.posts article:hover img, .posts article:hover video {width: 500px;}*/
-		.posts article img, .posts article video {width: 350px; transition: all 0.5s;}
+		.posts article img, .posts article video {width: 100%; transition: all 0.5s;} /* width: 350px; */
 		.posts article h1 {font-size: 100%;}
 		.posts article h2 {font-size: 80%;}
 		.posts article ul {padding: 0; margin: 0; list-style: none;}
@@ -172,8 +172,13 @@ $channel = isset($_GET['channel']) ? $_GET['channel'] : null;
 
 		.buttons {text-align: center; font-size: 200%; margin: 40px 20px;}
 		.buttons select, .buttons button, .buttons input {font-size: 100%;}
+
+		footer {text-align: center; padding: 5%;}
+
 		@media (max-width: 1024px) {
 			main {width: 90%;}
+			.posts article {padding: 10px; width: 95%;}
+			.buttons select, .buttons button, .buttons input {font-size: 95%;}
 		}
 	</style>
 </head>
@@ -196,13 +201,19 @@ $channel = isset($_GET['channel']) ? $_GET['channel'] : null;
 				}
 			?>
 		</datalist>		
-		Pages: <input type="number" id="pages" value="1" style="width: 60px;" />
-		Channel: <input type="text" name="channel" id="channel" value="<?php echo $channel; ?>" list="channels" />
-		<button onclick="loadMore(document.getElementById('pages').value);"> -= Load More =- </button><br>
-		<br>
+		Load <input type="number" id="pages" value="1" style="width: 60px;" /> Pages<br>
+		Channel: <input type="text" name="channel" id="channel" value="<?php echo $channel; ?>" list="channels" placeholder="Channel" /><br>
+		<button onclick="loadMore(document.getElementById('pages').value);"> -= Load More =- </button>
 	</div>
 	<script>
 		loadMore(document.getElementById('pages').value);
 	</script>
+
+	<footer>
+		&copy; <?php echo '2020',' - ',date('Y'); ?><br>
+		<br>
+<script id="_wauyl7">var _wau = _wau || []; _wau.push(["dynamic", "wv0i5d1a6q", "yl7", "c4302bffffff", "small"]);</script><script async src="//waust.at/d.js"></script>
+		<br>		
+	</footer>
 </body>
 </html>

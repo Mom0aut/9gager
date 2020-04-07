@@ -44,6 +44,7 @@ $channels = posts::load_channels();
 		.channel {margin: 1%; padding: 1%; width: 20%; border: 1px solid black;}
 		.channel h2 {font-size: 110%;}
 		.channel ul {margin: 0; padding: 0; list-style: none;}
+		footer {text-align: center; padding: 5%;}
 		@media (max-width: 1024px) {
 			main {width: 90%;}
 			.channel {width: 40%; margin: 10px 5px 0 5px; padding: 1.5%;}
@@ -102,7 +103,10 @@ $channels = posts::load_channels();
 	</main>
 
 	<footer>
-		&copy; <?php echo '2020',' - ',date('Y'); ?>
+		&copy; <?php echo '2020',' - ',date('Y'); ?><br>
+		<br>
+<script id="_wauyl7">var _wau = _wau || []; _wau.push(["dynamic", "wv0i5d1a6q", "yl7", "c4302bffffff", "small"]);</script><script async src="//waust.at/d.js"></script>
+		<br>		
 	</footer>
 </body>
 </html>
