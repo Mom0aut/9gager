@@ -3,6 +3,19 @@ class posts
 {
 	public static function load_channels()
 	{
+		// cache
+		if(file_exists('channels.json'))
+		{
+			$mtime = filectime('channels.json');
+            // $fdate = date('Y-m-d H:i:s', $mtime);
+            // $ddate = date('Y-m-d H:i:s', time() - 60 * 60 * 24);
+            if($mtime > (time() - 60 * 60 * 24))
+            {
+            	// we can use the file
+            	return json_decode(file_get_contents('channels.json'), TRUE);
+            }
+		}
+
 		$mysqli = db::connect();
 		$q = "SELECT channel,count(*) AS c FROM posts GROUP BY channel";
 		$results = $mysqli->query($q)
@@ -14,6 +27,8 @@ class posts
 		}
 		$results->free();
 
+		file_put_contents('channels.json', json_encode($channels));
+
 		return $channels;
 	}
 
@@ -23,7 +38,8 @@ class posts
 		if(!$last_updated)
 		{
 			$mysqli = db::connect();
-			$q = "SELECT CONVERT_TZ(creation_date, @@global.time_zone, '+00:00') AS creation_date FROM posts ORDER BY creation_date DESC LIMIT 1";
+			//$q = "SELECT CONVERT_TZ(creation_date, @@global.time_zone, '+00:00') AS creation_date FROM posts ORDER BY creation_date DESC LIMIT 1";
+			$q = "SELECT creation_date FROM posts ORDER BY creation_date DESC LIMIT 1";
 			$results = $mysqli->query($q)
 						or die($mysqli->error);
 			$row = $results->fetch_assoc();
@@ -40,7 +56,8 @@ class posts
 		if(!$last_post)
 		{
 			$mysqli = db::connect();
-			$q = "SELECT CONVERT_TZ(creationTs, @@global.time_zone, '+00:00') AS creationTs FROM posts ORDER BY creationTs DESC LIMIT 1";
+			//$q = "SELECT CONVERT_TZ(creationTs, @@global.time_zone, '+00:00') AS creationTs FROM posts ORDER BY creationTs DESC LIMIT 1";
+			$q = "SELECT creationTs FROM posts ORDER BY creationTs DESC LIMIT 1";
 			$results = $mysqli->query($q)
 						or die($mysqli->error);
 			$row = $results->fetch_assoc();
